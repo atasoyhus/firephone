@@ -1,0 +1,72 @@
+{
+  "rules":
+  {
+    "kullanicilar":{
+      ".read": false,
+      ".write": false,
+      "$kimlik": {
+        ".read": "auth.uid==$kimlik",
+        "bilgiler": {
+          // Arkadaþýmsa veya davet etmiþse ben de görebileyim...
+          ".read": "root.child('kullanicilar').child(auth.uid).child('arkadaslar').child($kimlik).exists() || root.child('davetler').child(auth.token.email.replace('@gmail.com','').replace('.','%2E')).child($kimlik).exists()",
+          ".write": "newData.exists() && $kimlik==auth.uid && newData.hasChildren(['email','isim','zaman'])",
+
+          "email": { ".validate": "newData.val()==auth.token.email" },
+          "isim": { ".validate": "newData.val()==auth.token.name" },
+          "zaman": { ".validate": "newData.val()<=now" },
+          "$herhangi": { ".validate": false }
+        },
+        "arkadaslar": {
+          "$arkadas": {
+            ".read": "auth.uid==$arkadas || auth.uid==$kimlik",
+            ".write": "(
+              newData.isBoolean() && newData.exists() && // ekleme ya da güncelleme ise
+              (
+                // Beni davet etmiþse, arkadaþý olarak ben kendimi ona ekleyebileyim
+                (auth.uid==$arkadas && root.child('davetler').child(auth.token.email.replace('@gmail.com','').replace('.','%2E')).child($kimlik).exists())
+                ||
+                // Onda ekliysem kendime onu ekleyebileyim 
+                (auth.uid==$kimlik && root.child('kullanicilar').child($arkadas).child('arkadaslar').child(auth.uid).exists())
+              )
+            )
+            ||
+			(
+              !newData.exists() && // Silme yapýlýyorsa
+              (auth.uid==$arkadas || auth.uid==$kimlik)
+            )"
+          }
+        },
+        "aramalar": {
+          "$rastgele": {
+            // Ýlk kýsýmda silme yapýlacaksa ve gruplardan silinmiþse (önce oradan silinmeli, ayrýca herkes silebilir karþýlýðý yoksa sorun deðil zaten), ikinci kýsýmda grup mevcutsa ve ben ekliysem
+            ".write": "newData.hasChildren(['kimlik','cevaplandi','tanimlayici','zaman']) && auth.uid==newData.child('kimlik').val()",
+
+            "kimlik": { ".validate": "root.child('kullanicilar').child($kimlik).child('arkadaslar').child(newData.val()).exists()" },
+            "zaman": { ".validate": "newData.val()<=now" },
+            "cevaplandi": { ".write": "auth.uid==data.parent().child('kimlik').val() && newData.isBoolean()" },
+            "tanimlayici": { ".validate": "newData.isString()" },
+            "$herhangi": { ".validate": false }
+          },
+          ".indexOn": "zaman"
+        }
+      }
+    },
+ 
+    "davetler": {
+      ".read": false,
+      ".write": false,
+      "$emailBas": {
+        ".read": "$emailBas==auth.token.email.replace('@gmail.com','').replace('.','%2E')",
+        "$kimlik": {
+          ".read": "auth.uid==$kimlik",
+          // Silme iþlemini davetin sahibi veya alýcýsý yapabilsin.
+          ".write": "(auth.uid==$kimlik && newData.hasChildren(['email','isim']) && $emailBas.length>2) || (!newData.exists() && ($kimlik==auth.uid || $emailBas==auth.token.email.replace('@gmail.com','').replace('.','%2E')))",
+
+          "email": { ".validate": "newData.val()==auth.token.email && $emailBas!=newData.val().replace('@gmail.com','').replace('.','%2E')" },
+          "isim": { ".validate": "newData.val()==auth.token.name" },
+          "$herhangi": { ".validate": false }
+        }
+      }
+    }
+  }
+}
