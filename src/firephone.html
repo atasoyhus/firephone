@@ -1,0 +1,116 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=450">
+<link rel="stylesheet" href="css/firephone.css" type="text/css">
+<script type='text/javascript' src='https://www.gstatic.com/firebasejs/3.3.2/firebase.js'></script>
+<script type="text/javascript" src="js/jq/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/firephone.js"></script>
+<script type="text/javascript" src="js/veritabani.js"></script>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Firephone">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#319f7c">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Firephone">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="apple-mobile-web-app-title" content="Firephone">
+<meta name="msapplication-TileColor" content="#319f7c">
+</head>
+<body>
+<div id="devortu" onclick="tKapat()">&nbsp;</div>
+
+<div id="baslik">
+	<div class="minikutu mksolda" onclick="mAcKapat(2,1)"><span style="font-size:30px;cursor:pointer">&#10149;</span></div>
+	<div class="minikutu" onclick="mAcKapat(1,1)"><span style="font-size:30px;cursor:pointer">&#9776;</span></div>
+	<div id="baslikyazi">Firephone</div>
+</div>
+
+<div id="solmenu" class="kosemenu">
+	<div id="menulogo"><img src="css/menulogo.png"></div>
+	<div>
+		<span href="#" class="mkapat" onclick="return mAcKapat(1,0)">&times;</span>
+		<a class="menu" id="mgiris" href="#" onclick="return mTiklandi(this)" data-kim-icin="anadis">&#10132; Giriş yap</a>
+		<a class="menu" href="#" onclick="return mTiklandi(this)" data-kim-icin="bilgiduzenleme">&#10132; Bilgilerim</a>
+		<a class="menu" id="markadaslar" href="#" onclick="return mTiklandi(this)" data-kim-icin="arklardis">&#10132; Arkadaşlar</a>
+		<a class="menu" id="mdavetler" href="#" onclick="return mTiklandi(this)" data-kim-icin="davetlerdis">&#10132; Davetler</a>
+		<a class="menu" id="mcikis" href="#" onclick="return mTiklandi(this)" data-kim-icin="anadis">&#10132; Çıkış Yap</a>
+	</div>
+</div>
+
+<div id="sagmenu" class="kosemenu">
+	<div>
+		<span href="#" class="mkapat" onclick="return mAcKapat(2,0)">&times;</span>
+		<a class="menu" id="myeniarkadas" href="#" onclick="return mTiklandi(this)">&#10132; Arkadaş ekle</a>
+		<a class="menu" id="msenkronizeet" href="#" onclick="return mTiklandi(this)">&#10132; Senkronize et</a>
+		<a class="menu" id="mgeri" href="#" onclick="return mTiklandi(this)">&#10132; Geri git</a>
+	</div>
+</div>
+
+<div id="dis">
+	<div id="anadis" class="icerikdis geriyok">
+		<div class="icerik">
+			<div id="anaEkran">
+				<div id="aeGiris" class="menu">
+					<img width="50" height="50" src="css/google.png"><br>
+					<a href="#" onclick="return girisYap()" class="menu">Google ile giriş yap</a>
+				</div>
+				<img id="anaEkranL" src="css/logo.png">
+			</div>
+		</div>
+	</div>
+	
+	<div id="yukdis" class="icerikdis">
+		<div class="icerik">
+			<div id="yukleniyor"><div id="animasyonlu">yükleniyor</div></div>
+		</div>
+	</div>
+	
+	<div id="hata" class="icerikdis">
+		<div class="icerik">
+			<div class="dialogk hata">
+				<div class="diyalogb">Giriş yapılamadı</div>
+				<span class="ketiket">Lütfen bilgilerinizi kontrol edin.</span>
+			</div>
+		</div>
+	</div>
+	
+	<div id="bilgiduzenleme" class="icerikdis">
+		<div class="icerik">
+			<div class="dialogk">
+				<div class="diyalogb">Bilgilerinizi düzenleyin</div>
+				<span class="ketiket">Görünür isminiz:</span>
+				<input type="text" placeholder="görünür isim">
+				<span class="ketiket">Durum bilgisi:</span>
+				<input type="text" placeholder="durum bilgisi">
+				<a href="#" class="menu">kaydet</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="arkadasekle" class="icerikdis">
+		<div class="icerik">
+			<div class="dialogk">
+				<div class="diyalogb">Arkadaş ekle</div>
+				<span class="ketiket">Gmail adresi:<br>(@gmail.com hariç)</span>
+				<input type="text" placeholder="">
+				<a href="#" class="menu" onclick="davetGonder()">davet gönder</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="arklardis" class="icerikdis geriyok">
+		<div id="arklaricerik" class="icerik">
+			<div class="leleman"><div class="minikutu">H</div><div class="isim">Hüseyin Atasoy</div><div class="durum">Çok sıkıcı öff</div></div>
+		</div>
+	</div>
+
+	<div id="davetlerdis" class="icerikdis geriyok">
+		<div id="davetler" class="icerik">
+		</div>
+	</div>
+</div>
+
+</body>
+</html>

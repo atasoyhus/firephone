@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=450">
+<script type="text/javascript" src="js/jq/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/jq/jquery-1.12.0-ui.min.js"></script>
+<script type="text/javascript" src="js/jq/jquery.ui.touch-punch.min.js"></script>
+<script type="text/javascript" src="js/kamera.js"></script>
+<script type="text/javascript" src="js/arama.js"></script>
+<link href="css/arama.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Sniglet&subset=latin-ext" rel="stylesheet">
+<title>Görüşme Penceresi</title>
+</head>
+<body>
+<div id="dis">
+	<div id="yanit">
+		<div id="bagla" onclick="kabulEt()">Bağla</div>
+		<div id="reddet" onclick="reddet()">Reddet</div>
+	</div>
+	<div id="yukleniyor"><div id="animasyonlu"><span id="bilgi">aranıyor</span></div></div>
+	<div class="videodis"><video id="video1" muted autoplay></video><div id="boyutlandirici">&nbsp;</div></div>
+	<video id="video2" autoplay onclick="sGosterGizle()"></video>
+</div>
+</body>
+</html>

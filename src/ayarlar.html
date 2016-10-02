@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=450">
+<script type="text/javascript" src="js/jq/jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="js/kamera.js"></script>
+<link href="css/arama.css" rel="stylesheet">
+<title>Ayarlar</title>
+<script type="text/javascript">
+$(document).ready(function(){
+	if (typeof MediaStreamTrack==='undefined' || typeof MediaStreamTrack.getSources==='undefined') {
+		//alert('Kamera listeleme özelliği desteklenmiyor. İlk kameraya bağlanılacak.');
+		kamerayiBaslat();
+	} else
+		MediaStreamTrack.getSources(kaynaklarGelince);
+	kamerayaBaglan(document.getElementById('videoAlani'),function(akis) {
+		$('select').on('change',function() {
+			kamerayiKapat();
+			kamerayiBaslat();
+		});
+	});
+});
+</script>
+</head>
+<body>
+<div id="ayarlardis">
+	<div id="kaynaklar">
+		<div><label>Video kaynağı:</label> <select id="vidKaynak"></select></div>
+		<div><label>Ses kaynağı:</label>  <select id="sesKaynak"></select></div>
+	</div>
+	<video id="videoAlani"></video>
+</div>
+</body>
+</html>
