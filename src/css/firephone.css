@@ -1,0 +1,309 @@
+/*
+***************************
+*	Firephone icin yazildi
+*	Huseyin Atasoy
+*	www.atasoyweb.net
+*	Eylul 2016
+***************************
+*/
+html,body {
+	font-family:arial;
+	font-size:20px;
+    margin:0;
+	padding:0;
+	width:100%;
+	height:100%;
+	background:#eee;
+	overflow:hidden;
+	touch-action:manipulation;
+}
+
+#yukleniyor {
+	position:absolute;
+	left:calc(50% - 100px);
+	top:calc(50% - 100px);
+	width:200px;
+	height:200px;
+	text-align:center;
+	z-index:0;
+}
+
+#animasyonlu {
+	color:#178964;
+    animation:hareketim 0.6s linear infinite;
+    -webkit-animation:hareketim 0.6s linear infinite;
+}
+@keyframes hareketim { /* CSS3 çok iyi ya :D */
+    0% { transform:scale(1); }
+    30% { transform:scale(1.5); }
+    100% { transform:scale(1); }
+}
+@-webkit-keyframes hareketim {
+    0% { transform:scale(1); }
+    30% { transform:scale(1.5); }
+    100% { transform:scale(1); }
+}
+
+#dis {
+	padding:0;
+	height:100%;
+}
+
+#baslik {
+	text-align:center;
+	background:#319f7c;
+	color:#fff;
+	font-weight:bold;
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	line-height:60px;
+	height:60px;
+	box-shadow:0 0 5px rgba(0,0,0,0.5);
+	z-index:2;
+}
+#baslikyazi {
+	padding-right:20px;
+}
+
+.minikutu {
+	width:40px;
+	height:40px;
+	line-height:40px;
+	text-align:center;
+	font-size:120%;
+	float:left;
+	box-shadow:0 0 5px #333;
+	background-color:#303F9F;
+	color:#fff;
+	cursor:pointer;
+}
+
+#baslik .minikutu {
+	margin:10px;
+}
+
+#baslik .mksolda {
+	float:right
+}
+
+.sbgizli .icerik {
+	overflow:hidden;
+}
+.icerikdis {
+	display:none;
+	margin-top:55px;
+	height:calc(100% - 55px);
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	z-index:0;
+}
+.icerik {
+	padding:0 10px;
+	overflow-y:auto;
+	height:100%;
+}
+.icerik > *:first-child {
+    margin-top:15px;
+}
+
+*:focus {
+    outline:none;
+}
+
+
+
+.dialogk {
+	background-color:#99b1a9;
+	padding:20px;
+	margin:50px!important;
+	box-shadow:0 0 5px rgba(0,0,0,0.3);
+}
+.hata {
+	background-color:#ce9990;
+}
+.diyalogb {
+	font-size:110%;
+	color:#fff;
+	font-weight:bold;
+	border-bottom:2px #5B639B solid;
+	margin-bottom:20px;
+	padding-bottom:10px;
+}
+.dialogk input[type=text] {
+	padding:2px;
+	font-size:90%;
+	height:30px;
+	line-height:30px;
+	color:#444;
+	width:calc(100% - 20px);
+	margin:10px;
+	border:none;
+}
+.dialogk .menu {
+	text-align:center;
+	color:#303F9F;
+}
+.ketiket {
+	color:#333;
+	margin-left:10px;
+	display:block;
+}
+
+
+.leleman {
+	padding:10px 15px;
+	margin:10px 0;
+	background-color:#fff;
+	box-shadow:0 0 3px rgba(0,0,0,0.3);
+	height:40px;
+	transition:background-color 0.4s;
+}
+.leleman .isim {
+	margin-left:50px;
+	color:#303F9F;
+	line-height:20px;
+	height:20px;
+	margin-bottom:4px;
+}
+.leleman .durum {
+	margin-left:50px;
+	font-size:70%;
+	white-space:nowrap;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+.sagbuton {
+	background-color:#f28800;
+	font-size:90%;
+	color:#fff;
+	width:40px;
+	float:right;
+	margin-top:-23px;
+	height:40px;
+	text-align:center;
+	line-height:40px;
+	border-radius:50%;
+	margin-left:15px;
+	cursor:pointer;
+}
+
+.olumlu {
+	background-color:#319f7c;
+}
+.olumsuz {
+	background-color:#dd5757;
+}
+.gizli {
+	display:none;
+}
+
+.leleman:hover {
+	background-color:#f0e5a5;
+}
+.lsecili,.lsecili:hover {
+	background-color:#edffc9;
+}
+
+.lbos {
+	text-align:center;
+	line-height:40px;
+	color:#777;
+}
+
+*:hover {
+	-webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+
+#anaEkran {
+	text-align:center;
+}
+#anaEkranL {
+	position:absolute;
+	left:calc(50% - 200px);
+	bottom:10px;
+	z-index:-1;
+}
+#aeGiris {
+	background:rgba(141,207,186,0.6);
+	padding:20px;
+	margin:50px;
+	box-shadow:0 0 5px rgba(0,0,0,0.3);
+}
+#anaEkran a {
+	color:#1360fe;
+	display:inline;
+	/*text-shadow:-1px 0 1px #fff,0 1px 1px #fff,1px 0 1px #fff,0 -1px 1px #fff;*/
+}
+
+
+#devortu {
+	position:fixed;
+	width:100%;
+	height:100%;
+	background-color:rgba(0,0,0,0.2);
+	z-index:3;
+	display:none;
+}
+
+#menulogo {
+	text-align:center;
+}
+
+.kosemenu {
+	position:fixed;
+	top:0;
+	width:0;
+	height:100%;
+	z-index:4;
+	overflow-x:hidden;
+	padding-top:50px;
+	box-shadow:0 0 5px rgba(0,0,0,0.5);
+	background-color:#319f7c;
+	transition:width 0.5s;
+}
+
+.kosemenu div {
+	width:250px;
+	padding-top:20px;
+}
+
+a.menu {
+	text-decoration:none;
+	padding:8px 8px 8px 20px;
+	font-size:120%;
+	color:#fff;
+	display:block;
+	transition:transform 0.2s;
+}
+
+a.menu:hover {
+	transform:scale(1.1);
+}
+
+.mkapat {
+	color:#fff;
+	cursor:pointer;
+	position:absolute;
+	font-size:300%;
+	top:0;
+}
+
+#solmenu {
+	left:0;
+}
+#solmenu .mkapat {
+	right:15px;
+
+}
+
+#sagmenu {
+	right:0;
+}
+#sagmenu .mkapat {
+	left:15px;
+}
