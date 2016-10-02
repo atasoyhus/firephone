@@ -1,0 +1,70 @@
+/*
+***************************
+*	Firephone icin yazildi
+*	Huseyin Atasoy
+*	www.atasoyweb.net
+*	Eylul 2016
+***************************
+*/
+body {
+	font-family:arial;
+	font-size:16px;
+	margin:0px;
+	padding:0px;
+	width:100%;
+	background-color:#f5f5f5;
+	min-width:450px;
+	color:#319F7C;
+	text-shadow:0 0 2px #319F7C;
+}
+#dis {
+	width:90%;
+	max-width:800px;
+	margin:0 auto;
+}
+#logo {
+	margin:15px 0;
+	text-align:center;
+	color:#319F7C;
+}
+#ic {
+	box-shadow:0 0 3px #888;
+	padding:10px;
+	border:#999 1px solid;
+	background-color:#E2F2ED;
+	color:#888;
+	text-shadow:0px 0px 1px #888;
+	text-align:justify;
+	padding:20px;
+	line-height:24px;
+}
+a {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+h2 {
+	font-size:120%;
+	margin:0;
+	padding:0;
+	margin-top:10px;
+}
+p {
+	text-indent:15px;
+	margin:0;
+	margin-top:10px;
+}
+ul {
+	margin:0;
+	padding:0;
+}
+li {
+	margin-top:15px;
+	margin-left:40px;
+}
+#alt {
+	text-align:center;
+	font-size:85%;
+	margin:10px 0;
+}
