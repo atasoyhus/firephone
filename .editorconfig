@@ -1,0 +1,13 @@
+root = true
+
+# Githubtaki görünümü iyileştirmek için...
+# Bkz: http://stackoverflow.com/a/33831598
+
+[*]
+insert_final_newline = true
+
+[*.{js,css,html}]
+charset = utf-8
+indent_style = tab
+indent_size = 4
+trim_trailing_whitespace = true
